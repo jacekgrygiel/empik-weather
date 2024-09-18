@@ -16,7 +16,12 @@ extension SearchCityViewController.ContentView {
 
 extension SearchCityViewController {
     final class ContentView: UIView {
-        private let titleLabel = UILabel()
+        private let titleLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Results"
+            label.textAlignment = .center
+            return label
+        }()
 
         let tableView = UITableView()
 
@@ -42,11 +47,12 @@ extension SearchCityViewController.ContentView {
     private func setupSubviews() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        backgroundColor = .white
     }
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
