@@ -23,9 +23,16 @@ class AppCoordinator: Coordinator {
     }
 
     override func navigate(to: Navigation.Name, transferable: Transferable?) {
+        guard let navigationController = controller as? UINavigationController else { return }
+
         switch to {
         case .search:
-            break
+            let searchViewModel = SearchCityViewModel(
+                coordinator: self,
+                dataSource: SearchCityDataSource()
+            )
+            let searchViewController = SearchCityViewController(viewModel: searchViewModel)
+            navigationController.pushViewController(searchViewController, animated: true)
         case .weather:
             break
         default:

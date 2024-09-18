@@ -16,12 +16,11 @@ extension SearchCityViewController.ContentView {
 
 extension SearchCityViewController {
     final class ContentView: UIView {
-        private let searchBar = UISearchBar()
+        private let titleLabel = UILabel()
+
         let tableView = UITableView()
 
-        var searchCompletion: ((String) -> Void)?
-
-        private lazy var stackView = UIStackView(arrangedSubviews: [searchBar, tableView])
+        private lazy var stackView = UIStackView(arrangedSubviews: [titleLabel, tableView])
 
         init() {
             super.init(frame: .zero)
@@ -43,8 +42,6 @@ extension SearchCityViewController.ContentView {
     private func setupSubviews() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        searchBar.delegate = self
-        searchBar.becomeFirstResponder()
     }
 
     private func setupLayout() {
@@ -54,11 +51,5 @@ extension SearchCityViewController.ContentView {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-    }
-}
-
-extension SearchCityViewController.ContentView: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchCompletion?(searchText)
     }
 }

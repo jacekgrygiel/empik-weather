@@ -19,6 +19,7 @@ final class SearchCityViewController: UIViewController {
 
     private lazy var contentView = ContentView()
     private var cancellables = Set<AnyCancellable>()
+    private let searchController = UISearchController()
 
     // MARK: - Initializers
 
@@ -30,7 +31,7 @@ final class SearchCityViewController: UIViewController {
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
 
-    // MARK: -
+    // MARK: - Appears
 
     override func loadView() {
         view = contentView
@@ -40,6 +41,7 @@ final class SearchCityViewController: UIViewController {
         super.viewDidLoad()
         setup(with: viewModel)
         setupSearch()
+
     }
 }
 
@@ -50,16 +52,22 @@ extension SearchCityViewController {
     }
 
     func setupSearch() {
-        contentView.searchCompletion = { [viewModel] search in
-            Task {
-                try await viewModel.search(name: search)
-            }
-        }
+        title = "Search City"
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
     }
 }
 
 extension SearchCityViewController: SearchCityViewControllerProtocol {
     @MainActor func reload() {
         contentView.tableView.reloadData()
+    }
+}
+
+extension SearchCityViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        Task {
+            try await viewModel.search(name: searchText)
+        }
     }
 }
