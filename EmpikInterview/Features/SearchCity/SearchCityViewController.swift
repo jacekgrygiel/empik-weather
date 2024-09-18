@@ -11,6 +11,8 @@ import Combine
 
 protocol SearchCityViewControllerProtocol: AnyObject {
     @MainActor func reload()
+    @MainActor func startLoading()
+    @MainActor func endLoading()
 }
 
 final class SearchCityViewController: UIViewController {
@@ -21,6 +23,7 @@ final class SearchCityViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private let searchController = UISearchController()
     private let debouner = Debouncer(delay: 2.0)
+    
     // MARK: - Initializers
 
     init(viewModel: SearchCityViewModel) {
@@ -32,7 +35,6 @@ final class SearchCityViewController: UIViewController {
     required init?(coder: NSCoder) { nil }
 
     // MARK: - Appears
-
     override func loadView() {
         view = contentView
     }
@@ -41,7 +43,11 @@ final class SearchCityViewController: UIViewController {
         super.viewDidLoad()
         setup(with: viewModel)
         setupSearch()
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Search City"
     }
 }
 
@@ -52,7 +58,6 @@ extension SearchCityViewController {
     }
 
     func setupSearch() {
-        title = "Search City"
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
     }
@@ -61,6 +66,14 @@ extension SearchCityViewController {
 extension SearchCityViewController: SearchCityViewControllerProtocol {
     @MainActor func reload() {
         contentView.tableView.reloadData()
+    }
+
+    @MainActor func startLoading() {
+        setIsLoading(true)
+    }
+    
+    @MainActor func endLoading() {
+        setIsLoading(false)
     }
 }
 

@@ -19,7 +19,6 @@ extension SearchCityViewController {
         private let titleLabel: UILabel = {
             let label = UILabel()
             label.text = "Results"
-            label.textAlignment = .center
             return label
         }()
 
@@ -53,8 +52,8 @@ extension SearchCityViewController.ContentView {
     private func setupLayout() {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

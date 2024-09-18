@@ -45,18 +45,26 @@ final class SearchCityViewModel {
     }
 
     private func fetchWeather(cityName: String) {
+        view?.startLoading()
         Task { [weak self] in
-            let weatherData = try await self?.openWeatherService.weather(for: cityName)
-            self?.coordinator.navigate(to: .weather, transferable: weatherData?.weather)
+            do {
+                let weatherData = try await self?.openWeatherService.weather(for: cityName)
+                self?.coordinator.navigate(to: .weather, transferable: weatherData)
+            } catch {
+                print(error)
+            }
+            self?.view?.endLoading()
         }
     }
 
     func search(name: String) async throws {
         if isValidCityName(name) {
+            view?.startLoading()
             let result = try await openWeatherService.cities(for: name)
                 .map {
                     City(name: $0.name, state: $0.state, country: $0.country)
                 }
+            view?.endLoading()
             self.dataSource.items = result
         } else {
             throw RegexError.invalid
@@ -70,4 +78,4 @@ final class SearchCityViewModel {
     }
 }
 
-extension Array<WeatherResponse.Weather> : Transferable { }
+extension WeatherResponse.WeatherData : Transferable { }

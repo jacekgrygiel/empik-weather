@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Networking
 
 extension Navigation.Name {
     static let search: Self = "search"
@@ -25,8 +26,8 @@ class AppCoordinator: Coordinator {
     override func navigate(to: Navigation.Name, transferable: Transferable?) {
         guard let navigationController = controller as? UINavigationController else { return }
 
-        switch to {
-        case .search:
+        switch (to, transferable) {
+        case (.search, _):
             let searchViewModel = SearchCityViewModel(
                 coordinator: self,
                 dataSource: SearchCityDataSource(),
@@ -35,8 +36,15 @@ class AppCoordinator: Coordinator {
             )
             let searchViewController = SearchCityViewController(viewModel: searchViewModel)
             navigationController.pushViewController(searchViewController, animated: true)
-        case .weather:
-            break
+        case (.weather, let weather as WeatherResponse.WeatherData):
+            let weatherViewModel = WeatherViewModel(
+                weather: weather,
+                coordinator: self,
+                dataSource: WeatherDataSource(),
+                openWeatherService: Environment.current.openWeatherService
+            )
+            let weatherViewController = WeatherViewController(viewModel: weatherViewModel)
+            navigationController.pushViewController(weatherViewController, animated: true)
         default:
             break
         }

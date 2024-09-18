@@ -9,8 +9,7 @@ struct WeatherRequest: RequestType {
     var query: [URLQueryItem] { 
         [
         .init(name: "q", value: cityName),
-        .init(name: "units", value: "metric"),
-        .init(name: "lang", value: "pl")
+        .init(name: "units", value: "metric")
         ]
     }
 }
@@ -21,43 +20,43 @@ public struct WeatherResponse: ResponseType {
     public struct WeatherData: Codable {
         let coord: Coord
         public let weather: [Weather]
-        let base: String
-        let main: Main
-        let visibility: Int
-        let wind: Wind
+        public let base: String
+        public let main: Main
+        public let visibility: Int
+        public let wind: Wind
         let clouds: Clouds
         let dt: Int
         let sys: Sys
-        let timezone: Int
+        public let timezone: Int
         let id: Int
-        let name: String
+        public let name: String
         let cod: Int
     }
 
     // Coordinates
-    struct Coord: Codable {
+    public struct Coord: Codable {
         let lon: Double
         let lat: Double
     }
 
     // Weather conditions
     public struct Weather: Codable {
-        let id: Int
-        let main: String
-        let description: String
-        let icon: String
+        public let id: Int
+        public let main: String
+        public let description: String
+        public let icon: String
     }
 
     // Main weather data
-    struct Main: Codable {
-        let temp: Double
-        let feelsLike: Double
-        let tempMin: Double
-        let tempMax: Double
-        let pressure: Int
-        let humidity: Int
-        let seaLevel: Int
-        let grndLevel: Int
+    public  struct Main: Codable {
+        public let temp: Double
+        public let feelsLike: Double
+        public let tempMin: Double
+        public let tempMax: Double
+        public let pressure: Int
+        public let humidity: Int
+        public let seaLevel: Int
+        public let grndLevel: Int
 
         // Coding keys to map JSON keys to property names
         enum CodingKeys: String, CodingKey {
@@ -73,19 +72,19 @@ public struct WeatherResponse: ResponseType {
     }
 
     // Wind data
-    struct Wind: Codable {
+    public struct Wind: Codable {
         let speed: Double
         let deg: Int
         let gust: Double
     }
 
     // Cloud coverage
-    struct Clouds: Codable {
+    public struct Clouds: Codable {
         let all: Int
     }
 
     // System data
-    struct Sys: Codable {
+    public struct Sys: Codable {
         let type: Int
         let id: Int
         let country: String
