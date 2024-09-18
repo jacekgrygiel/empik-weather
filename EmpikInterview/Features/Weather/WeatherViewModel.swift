@@ -38,8 +38,8 @@ final class WeatherViewModel {
 
     private func load() {
         Task { [weak self] in
-            guard let self else { return }
-            let cityName = self.weather.name
+            guard let self, let cityName = self.weather.name else { return }
+
             let value = try await self.openWeatherService.forecastWeather(for: cityName)
             self.dataSource.items = value.list
             self.view?.reload()

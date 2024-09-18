@@ -50,10 +50,12 @@ final class SearchCityViewModel {
             do {
                 let weatherData = try await self?.openWeatherService.weather(for: cityName)
                 self?.coordinator.navigate(to: .weather, transferable: weatherData)
+                self?.view?.endLoading()
             } catch {
                 print(error)
+                self?.view?.endLoading()
+                self?.view?.presentError()
             }
-            self?.view?.endLoading()
         }
     }
 

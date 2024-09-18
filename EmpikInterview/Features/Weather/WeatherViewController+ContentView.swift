@@ -40,7 +40,7 @@ extension WeatherViewController {
             temperatureLabel.textColor = colorForTemperature(temperature)
 
             // Update weather condition label
-            weatherConditionLabel.text = weather.weather.map { $0.main }.joined(separator: ", ")
+            weatherConditionLabel.text = weather.weather.compactMap { $0.main }.joined(separator: ", ")
 
         }
     }

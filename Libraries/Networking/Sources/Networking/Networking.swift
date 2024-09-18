@@ -78,8 +78,10 @@ public struct Networking: NetworkingType {
                     break
                 case 401:
                     completion(.failure(NetworkingError.unauthenticated))
+                    return
                 default:
                     completion(.failure(NetworkingError.invalidResponse(response: httpResponse)))
+                    return
                 }
                 guard let data, let response else { return }
                 do {

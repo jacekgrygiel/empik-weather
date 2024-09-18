@@ -42,7 +42,9 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         viewModel.viewDidLoad()
         contentView.update(weather: viewModel.weather)
-        navigationController?.navigationBar.topItem?.title = " "
+        navigationController?.navigationBar.topItem?.title = ""
+        guard let city = viewModel.weather.name else { return }
+        title = "Weather: \(city)".localized
     }
 
     func setup(with viewModel: WeatherViewModel) {

@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 import Combine
 
-protocol SearchCityViewControllerProtocol: AnyObject {
-    @MainActor func reload()
-    @MainActor func startLoading()
-    @MainActor func endLoading()
+@MainActor protocol SearchCityViewControllerProtocol: AnyObject {
+    func reload()
+    func startLoading()
+    func endLoading()
+    func presentError()
 }
 
 final class SearchCityViewController: UIViewController {
@@ -22,8 +23,8 @@ final class SearchCityViewController: UIViewController {
     private lazy var contentView = ContentView()
     private var cancellables = Set<AnyCancellable>()
     private let searchController = UISearchController()
-    private let debouner = Debouncer(delay: 2.0)
-    
+    private let debouner = Debouncer(delay: 1.0)
+
     // MARK: - Initializers
 
     init(viewModel: SearchCityViewModel) {
@@ -35,6 +36,7 @@ final class SearchCityViewController: UIViewController {
     required init?(coder: NSCoder) { nil }
 
     // MARK: - Appears
+
     override func loadView() {
         view = contentView
     }
@@ -47,7 +49,7 @@ final class SearchCityViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Search City"
+        title = "Search City".localized
     }
 }
 
@@ -64,6 +66,7 @@ extension SearchCityViewController {
 }
 
 extension SearchCityViewController: SearchCityViewControllerProtocol {
+    
     @MainActor func reload() {
         contentView.tableView.reloadData()
     }
@@ -74,6 +77,12 @@ extension SearchCityViewController: SearchCityViewControllerProtocol {
     
     @MainActor func endLoading() {
         setIsLoading(false)
+    }
+
+    @MainActor func presentError() {
+        let alertController = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+        alertController.addAction(.init(title: "OK", style: .default))
+        self.present(alertController, animated: true)
     }
 }
 

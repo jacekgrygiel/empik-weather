@@ -27,7 +27,7 @@ public final class OpenWeatherService: OpenWeatherServiceType {
     }
 
     public func weather(for city: String) async throws -> WeatherResponse.WeatherData {
-        try await withCheckedThrowingContinuation { continuation in
+        try await withUnsafeThrowingContinuation { continuation in
             network.request(request: WeatherRequest(cityName: city), responseType: WeatherResponse.self) { result in
                 switch result {
                 case .success(let value):

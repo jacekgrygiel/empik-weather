@@ -31,6 +31,7 @@
 		B9C86FF42C9B73E2009E3685 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FF32C9B73E2009E3685 /* WeatherViewModel.swift */; };
 		B9C86FF62C9B7411009E3685 /* WeatherDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FF52C9B7411009E3685 /* WeatherDataSourceType.swift */; };
 		B9C86FF92C9B7F52009E3685 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FF82C9B7F52009E3685 /* LoadingViewController.swift */; };
+		B9C86FFB2C9B8333009E3685 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FFA2C9B8333009E3685 /* Localizable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		B9C86FF32C9B73E2009E3685 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		B9C86FF52C9B7411009E3685 /* WeatherDataSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataSourceType.swift; sourceTree = "<group>"; };
 		B9C86FF82C9B7F52009E3685 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		B9C86FFA2C9B8333009E3685 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			children = (
 				B9C86FCE2C9B27D3009E3685 /* RegexPattern.swift */,
 				B9C86FE62C9B474C009E3685 /* DispatchDebounce.swift */,
+				B9C86FFA2C9B8333009E3685 /* Localizable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				B9C86FE72C9B474C009E3685 /* DispatchDebounce.swift in Sources */,
 				B9C86F972C9B2694009E3685 /* AppDelegate.swift in Sources */,
 				B9C86FE02C9B2D2A009E3685 /* ReusableIdentifier.swift in Sources */,
+				B9C86FFB2C9B8333009E3685 /* Localizable.swift in Sources */,
 				B9C86FCC2C9B27AB009E3685 /* Coordinator.swift in Sources */,
 				B9C86FF02C9B6E13009E3685 /* WeatherViewController.swift in Sources */,
 				B9C86FF42C9B73E2009E3685 /* WeatherViewModel.swift in Sources */,

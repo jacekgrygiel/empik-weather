@@ -18,7 +18,7 @@ extension SearchCityViewController {
     final class ContentView: UIView {
         private let titleLabel: UILabel = {
             let label = UILabel()
-            label.text = "Results"
+            label.text = "Results".localized
             return label
         }()
 
