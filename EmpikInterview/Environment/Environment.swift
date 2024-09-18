@@ -1,16 +1,9 @@
-//
-//  Environment.swift
-//  EmpikInterview
-//
-//  Created by Jacek Grygiel on 18/09/2024.
-//
-
 import Foundation
 import Networking
 
 struct Environment {
-    static let network = Networking(environment: .init(apiKey: "https://api.openweathermap.org/data/2.5", url: "bc0494a4ed2dab19be8fdd09627a7f6d"))
-    
+    static let network = Networking(environment: .init(apiKey: "757334128a26cea4141d93a432fa1fe7", url: "https://api.openweathermap.org/data/2.5"))
+
     let openWeatherService: OpenWeatherServiceType = OpenWeatherService(network: network)
 }
 

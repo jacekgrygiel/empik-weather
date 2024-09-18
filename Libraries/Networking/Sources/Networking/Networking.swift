@@ -88,7 +88,7 @@ public struct Networking: NetworkingType {
                 } catch {
                     completion(.failure(NetworkingError.default(error: error)))
                 }
-            }
+            }.resume()
         } catch {
             completion(.failure(NetworkingError.default(error: error)))
         }

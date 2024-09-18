@@ -24,6 +24,7 @@
 		B9C86FDE2C9B2C64009E3685 /* SearchCityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FDD2C9B2C64009E3685 /* SearchCityDataSource.swift */; };
 		B9C86FE02C9B2D2A009E3685 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FDF2C9B2D2A009E3685 /* ReusableIdentifier.swift */; };
 		B9C86FE52C9B44E1009E3685 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B9C86FE42C9B44E1009E3685 /* Networking */; };
+		B9C86FE72C9B474C009E3685 /* DispatchDebounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FE62C9B474C009E3685 /* DispatchDebounce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		B9C86FDD2C9B2C64009E3685 /* SearchCityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityDataSource.swift; sourceTree = "<group>"; };
 		B9C86FDF2C9B2D2A009E3685 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
 		B9C86FE22C9B43F1009E3685 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = Libraries/Networking; sourceTree = "<group>"; };
+		B9C86FE62C9B474C009E3685 /* DispatchDebounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchDebounce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				B9C86FCE2C9B27D3009E3685 /* RegexPattern.swift */,
+				B9C86FE62C9B474C009E3685 /* DispatchDebounce.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				B9C86F9B2C9B2694009E3685 /* AppCoordinator.swift in Sources */,
 				B9C86FD32C9B2941009E3685 /* Environment.swift in Sources */,
 				B9C86FDE2C9B2C64009E3685 /* SearchCityDataSource.swift in Sources */,
+				B9C86FE72C9B474C009E3685 /* DispatchDebounce.swift in Sources */,
 				B9C86F972C9B2694009E3685 /* AppDelegate.swift in Sources */,
 				B9C86FE02C9B2D2A009E3685 /* ReusableIdentifier.swift in Sources */,
 				B9C86FCC2C9B27AB009E3685 /* Coordinator.swift in Sources */,

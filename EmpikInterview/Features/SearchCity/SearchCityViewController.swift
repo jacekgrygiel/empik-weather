@@ -20,7 +20,7 @@ final class SearchCityViewController: UIViewController {
     private lazy var contentView = ContentView()
     private var cancellables = Set<AnyCancellable>()
     private let searchController = UISearchController()
-
+    private let debouner = Debouncer(delay: 2.0)
     // MARK: - Initializers
 
     init(viewModel: SearchCityViewModel) {
@@ -66,8 +66,8 @@ extension SearchCityViewController: SearchCityViewControllerProtocol {
 
 extension SearchCityViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        Task {
-            try await viewModel.search(name: searchText)
+        debouner.debounce {
+            try await self.viewModel.search(name: searchText)
         }
     }
 }
