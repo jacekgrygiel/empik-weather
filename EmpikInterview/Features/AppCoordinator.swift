@@ -29,7 +29,8 @@ class AppCoordinator: Coordinator {
         case .search:
             let searchViewModel = SearchCityViewModel(
                 coordinator: self,
-                dataSource: SearchCityDataSource()
+                dataSource: SearchCityDataSource(),
+                openWeatherService: Environment.current.openWeatherService
             )
             let searchViewController = SearchCityViewController(viewModel: searchViewModel)
             navigationController.pushViewController(searchViewController, animated: true)

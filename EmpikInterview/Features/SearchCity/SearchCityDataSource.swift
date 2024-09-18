@@ -7,9 +7,10 @@
 
 import UIKit
 import Combine
+import Networking
 
 protocol SearchCityDataSourceType: NSObjectProtocol, UITableViewDataSource, UITableViewDelegate  {
-    var items: [Any] { set get }
+    var items: [SearchResponse.WeatherData] { set get }
     var selectedCity: PassthroughSubject<String, Never> { get }
 
     func setUp(tableView: UITableView)
@@ -17,7 +18,7 @@ protocol SearchCityDataSourceType: NSObjectProtocol, UITableViewDataSource, UITa
 
 final class SearchCityDataSource: NSObject, SearchCityDataSourceType {
 
-    var items: [Any] = []
+    var items: [SearchResponse.WeatherData] = []
     let selectedCity = PassthroughSubject<String, Never>()
 
     func setUp(tableView: UITableView) {

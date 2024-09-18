@@ -23,6 +23,7 @@
 		B9C86FDC2C9B2A2D009E3685 /* SearchCityViewController+ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FDB2C9B2A2D009E3685 /* SearchCityViewController+ContentView.swift */; };
 		B9C86FDE2C9B2C64009E3685 /* SearchCityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FDD2C9B2C64009E3685 /* SearchCityDataSource.swift */; };
 		B9C86FE02C9B2D2A009E3685 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C86FDF2C9B2D2A009E3685 /* ReusableIdentifier.swift */; };
+		B9C86FE52C9B44E1009E3685 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B9C86FE42C9B44E1009E3685 /* Networking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B9C86FDB2C9B2A2D009E3685 /* SearchCityViewController+ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchCityViewController+ContentView.swift"; sourceTree = "<group>"; };
 		B9C86FDD2C9B2C64009E3685 /* SearchCityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityDataSource.swift; sourceTree = "<group>"; };
 		B9C86FDF2C9B2D2A009E3685 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
+		B9C86FE22C9B43F1009E3685 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = Libraries/Networking; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C86FE52C9B44E1009E3685 /* Networking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,10 +96,12 @@
 		B9C86F8A2C9B2694009E3685 = {
 			isa = PBXGroup;
 			children = (
+				B9C86FE22C9B43F1009E3685 /* Networking */,
 				B9C86F952C9B2694009E3685 /* EmpikInterview */,
 				B9C86FAC2C9B2696009E3685 /* EmpikInterviewTests */,
 				B9C86FB62C9B2696009E3685 /* EmpikInterviewUITests */,
 				B9C86F942C9B2694009E3685 /* Products */,
+				B9C86FE32C9B44E1009E3685 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,6 +193,13 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
+		B9C86FE32C9B44E1009E3685 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,6 +216,9 @@
 			dependencies = (
 			);
 			name = EmpikInterview;
+			packageProductDependencies = (
+				B9C86FE42C9B44E1009E3685 /* Networking */,
+			);
 			productName = EmpikInterview;
 			productReference = B9C86F932C9B2694009E3685 /* EmpikInterview.app */;
 			productType = "com.apple.product-type.application";
@@ -667,6 +682,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B9C86FE42C9B44E1009E3685 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B9C86F8B2C9B2694009E3685 /* Project object */;
 }
