@@ -7,3 +7,10 @@
 
 import Foundation
 
+struct RegexPattern {
+    static let cityRegex = "^[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+$"
+}
+
+enum RegexError: Error {
+    case invalid
+}

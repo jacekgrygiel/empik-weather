@@ -1,6 +1,6 @@
 import Foundation
-struct SearchRequest: RequestType {
-    var path: String { "/weather" }
+struct WeatherRequest: RequestType {
+    var path: String { "/data/2.5/weather" }
     var method: HTTPMethod = .get
     var cityName: String
     var parameters: String? = nil
@@ -15,7 +15,7 @@ struct SearchRequest: RequestType {
     }
 }
 
-public struct SearchResponse: ResponseType {
+public struct WeatherResponse: ResponseType {
     public typealias Response = WeatherData
 
     public struct WeatherData: Codable {

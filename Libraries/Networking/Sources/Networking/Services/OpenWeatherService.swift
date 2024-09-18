@@ -1,6 +1,7 @@
 import Foundation
 public protocol OpenWeatherServiceType {
-    func search(for city: String) async throws -> SearchResponse.WeatherData
+    func cities(for name: String) async throws -> [CityResponse.City]
+    func weather(for city: String) async throws -> WeatherResponse.WeatherData
 }
 
 public final class OpenWeatherService: OpenWeatherServiceType {
@@ -10,10 +11,23 @@ public final class OpenWeatherService: OpenWeatherServiceType {
         self.network = network
     }
 
-    public func search(for city: String) async throws -> SearchResponse.WeatherData {
+    public func cities(for name: String) async throws -> [CityResponse.City] {
+        try await withCheckedThrowingContinuation { continuation in
+            network.request(request: CityRequest(name: name), responseType: CityResponse.self) { result in
+                switch result {
+                case .success(let value):
+                    continuation.resume(returning: value)
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    public func weather(for city: String) async throws -> WeatherResponse.WeatherData {
 
         try await withCheckedThrowingContinuation { continuation in
-            network.request(request: SearchRequest(cityName: city), responseType: SearchResponse.self) { result in
+            network.request(request: WeatherRequest(cityName: city), responseType: WeatherResponse.self) { result in
                 switch result {
                 case .success(let value):
                     continuation.resume(returning: value)

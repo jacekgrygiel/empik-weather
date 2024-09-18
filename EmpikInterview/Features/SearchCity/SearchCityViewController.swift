@@ -68,6 +68,7 @@ extension SearchCityViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         debouner.debounce {
             try await self.viewModel.search(name: searchText)
+            self.contentView.tableView.reloadData()
         }
     }
 }

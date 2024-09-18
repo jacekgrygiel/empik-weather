@@ -10,16 +10,16 @@ import Combine
 import Networking
 
 protocol SearchCityDataSourceType: NSObjectProtocol, UITableViewDataSource, UITableViewDelegate  {
-    var items: [SearchResponse.WeatherData] { set get }
-    var selectedCity: PassthroughSubject<String, Never> { get }
+    var items: [City] { set get }
+    var selectedCity: PassthroughSubject<City, Never> { get }
 
     func setUp(tableView: UITableView)
 }
 
 final class SearchCityDataSource: NSObject, SearchCityDataSourceType {
 
-    var items: [SearchResponse.WeatherData] = []
-    let selectedCity = PassthroughSubject<String, Never>()
+    var items: [City] = []
+    let selectedCity = PassthroughSubject<City, Never>()
 
     func setUp(tableView: UITableView) {
         tableView.dataSource = self
@@ -43,12 +43,12 @@ final class SearchCityDataSource: NSObject, SearchCityDataSourceType {
         }
 
         let item = items[indexPath.row]
-        cell.textLabel?.text = ""
+        cell.textLabel?.text = [item.name, item.state, item.country].compactMap { $0 }.joined(separator: ", ")
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCity.send("")
+        selectedCity.send(items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
