@@ -1,6 +1,5 @@
-# empik-weather
+# open weather map
 
-## Architektura projektu MVVM + Coordinators
+## Architecture: MVVM + Coordinators
 
-#### Debounce jest ustawiony na 1 sekundę po to żeby nie uderzać zbyt często do serwisu open weather map. 
 
