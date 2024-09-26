@@ -18,7 +18,7 @@ import Combine
 
 final class SearchCityViewController: UIViewController {
 
-    var viewModel: SearchCityViewModel
+    private var viewModel: SearchCityViewModel
 
     private lazy var contentView = ContentView()
     private var cancellables = Set<AnyCancellable>()

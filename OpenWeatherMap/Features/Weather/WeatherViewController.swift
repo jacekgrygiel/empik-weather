@@ -17,7 +17,7 @@ protocol WeatherViewControllerProtocol: AnyObject {
 
 class WeatherViewController: UIViewController {
 
-    var viewModel: WeatherViewModel
+    private let viewModel: WeatherViewModel
 
     private lazy var contentView = ContentView()
 
@@ -41,15 +41,19 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
-        contentView.update(weather: viewModel.weather)
-        navigationController?.navigationBar.topItem?.title = ""
+        setupNavigationBar()
+    }
+
+    func setupNavigationBar() {
         guard let city = viewModel.weather.name else { return }
         title = "Weather: \(city)".localized
+        navigationController?.navigationBar.topItem?.title = ""
     }
 
     func setup(with viewModel: WeatherViewModel) {
         viewModel.view = self
         viewModel.dataSource.setUp(tableView: contentView.tableView)
+        contentView.update(weather: viewModel.weather)
     }
 }
 
